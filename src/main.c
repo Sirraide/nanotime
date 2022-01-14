@@ -84,4 +84,5 @@ int main(int argc, char **argv) {
 	print_time(Y "Finished:" G " %c (%s)", program_end);
 	printf(Y "s:" G " %zu" Y ", ms:" G " %zu" Y ", us:" G " %zu" Y ", ns:" G " %zu\n",
 		s, ms, us, ns);
+	if (WEXITSTATUS(wstatus) != 0) exit(WEXITSTATUS(wstatus));
 }
