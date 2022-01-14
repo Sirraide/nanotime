@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
 
 	end_ret = clock_gettime(CLOCK_MONOTONIC, &end);
 
-	if (start_ret < 0 | end_ret < 0) {
+	if (start_ret < 0 || end_ret < 0) {
 		perror(R "clock_gettime()");
 		printf("%s", Q);
 		exit(1);
