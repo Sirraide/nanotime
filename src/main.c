@@ -50,13 +50,13 @@ int main(int argc, char **argv) {
 		perror(R "execvp()");
 		printf("%s", Q);
 		exit(1);
-	} else start_ret = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+	} else start_ret = clock_gettime(CLOCK_MONOTONIC, &start);
 
 	int wstatus, pid_ret;
 	do pid_ret = waitpid(pid, &wstatus, 0);
 	while (!WIFEXITED(wstatus));
 
-	end_ret = clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+	end_ret = clock_gettime(CLOCK_MONOTONIC, &end);
 
 	if (start_ret < 0 | end_ret < 0) {
 		perror(R "clock_gettime()");
