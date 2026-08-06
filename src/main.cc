@@ -40,11 +40,11 @@ int main(int argc, char** argv) {
 
     auto end = chrono::high_resolution_clock::now();
 
-    if (WIFSIGNALED(status)) fmt::print(R "Process terminated by signal {}\n" Q, WTERMSIG(status));
+    if (WIFSIGNALED(status)) fmt::print(stderr, R "Process terminated by signal {}\n" Q, WTERMSIG(status));
 
-    fmt::print(Y "Started:" G "  {:%F %T UTC}\n", start);
-    fmt::print(Y "Finished:" G " {:%F %T UTC}\n", end);
-    fmt::print(
+    fmt::print(stderr, Y "Started:" G "  {:%F %T UTC}\n", start);
+    fmt::print(stderr, Y "Finished:" G " {:%F %T UTC}\n", end);
+    fmt::print(stderr, 
         Y "s:" G " {}" Y ", " G "ms:" Y " {}" Y ", " G "us:" Y " {}" Y ", " G "ns:" Y " {}\n",
         chrono::duration_cast<chrono::seconds>(end - start).count(),
         chrono::duration_cast<chrono::milliseconds>(end - start).count() % 1000,
